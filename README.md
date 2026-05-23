@@ -21,11 +21,28 @@ Developed by:THAMARAISELVI.V
 RegisterNumber:212225040467
 ```
 ```
+import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.cluster import KMeans
+data = pd.read_csv("Mall_Customer.csv")
+X = data.iloc[:, [3, 4]].values
+kmeans = KMeans(n_clusters=5, random_state=0)
+y_kmeans = kmeans.fit_predict(X)
+plt.scatter(X[:, 0], X[:, 1], c=y_kmeans, s=50)
+plt.scatter(kmeans.cluster_centers_[:, 0],
+            kmeans.cluster_centers_[:, 1],
+            s=200,
+            marker='X')
+plt.xlabel("Annual Income")
+plt.ylabel("Spending Score")
+plt.title("Customer Segmentation using K-Means")
+plt.show()
 
 ```
 
 ## Output:
 
+<img width="1633" height="715" alt="image" src="https://github.com/user-attachments/assets/3dcab438-91e5-4b9e-846f-010dda0236c1" />
 
 
 ## Result:
